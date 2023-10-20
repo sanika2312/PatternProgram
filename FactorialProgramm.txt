@@ -1,0 +1,30 @@
+package practice;
+
+import java.util.Scanner;
+
+class demo2
+{
+	void find_fact(int num)
+	{
+		for(int i=1; i<=num/2;i++)
+		{
+			if(num%i==0)
+			{
+				System.out.println(i+" ");
+			}
+		}
+	}
+}
+
+public class PracticeProgramm {
+
+	public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	System.out.print("Enter number");
+	int num=sc.nextInt();
+	demo2 ob=new demo2();
+	ob.find_fact(num);
+	
+	}
+
+}
