@@ -1,0 +1,71 @@
+package serialization;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+
+class BankCustomer implements Serializable
+{
+	private int pinCode;
+	private static long accNum;//static data can not be serializationi
+	private static String name;
+	private double amount;
+	public BankCustomer(int i, long l, String name, double d) {
+/*
+ * if you do not want to serialize a specific attribute then we can either use 
+ * static or transient keyword
+ * 
+ * as we know that static does not dependent on the object of the class
+ * 
+ */
+
+	pinCode=i;
+	accNum=l;
+	this.name=name;
+	amount=d;
+	
+		
+		
+		
+		
+	}
+	public int getPinCode() {
+		return pinCode;
+	}
+	public void setPinCode(int pinCode) {
+		this.pinCode = pinCode;
+	}
+	public long getAccNum() {
+		return accNum;
+	}
+	public void setAccNum(long accNum) {
+		this.accNum = accNum;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public double getAmount() {
+		return amount;
+	}
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
+	
+}
+public class TestSerialization1 {
+
+	public static void main(String[] args) throws IOException {
+		FileOutputStream fout=new FileOutputStream("E://customerBankInfo.txt");
+		ObjectOutputStream out=new ObjectOutputStream(fout);
+		BankCustomer customerInfo=new BankCustomer(1233, 3453423L, "S", 2424.00);
+		//void writeObject(Object)
+		out.writeObject(customerInfo);
+		System.out.println("Data has been serialized");
+
+	}
+
+}
